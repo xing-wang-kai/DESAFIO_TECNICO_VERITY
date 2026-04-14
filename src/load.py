@@ -20,6 +20,14 @@ def ensure_target_table(db_path):
 
 
 def replace_window_in_sqlite(db_path, analytics_pdf: pd.DataFrame, start_date: str, end_date: str):
+    """Substitui os dados na tabela orders_analytics para o período especificado por start_date e end_date, e insere os novos dados do analytics_pdf.
+    
+    Args:   
+        db_path (str): Caminho para o banco de dados SQLite.
+        analytics_pdf (pd.DataFrame): DataFrame contendo os dados analíticos a serem inseridos.
+        start_date (str): Data de início do período a ser substituído, no formato 'YYYY-MM-DD'.
+        end_date (str): Data de fim do período a ser substituído, no formato 'YYYY-MM-DD'.
+    """
     ensure_target_table(db_path)
 
     with sqlite_connection(db_path) as conn:

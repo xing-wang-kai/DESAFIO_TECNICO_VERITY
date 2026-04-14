@@ -12,6 +12,10 @@ def get_spark(app_name: str) -> SparkSession:
 
 
 def transform_orders(spark: SparkSession, input_rows: list[dict]) -> DataFrame:
+    """Aplica as regras de negócio para transformar os dados de pedidos, gerando duas visões:  
+    - latest_orders_df: visão detalhada do estado mais recente de cada pedido por data de negócio.
+    - analytics_df: visão analítica diária consolidada por status.
+    """
     df = spark.createDataFrame(input_rows)
 
     df = (
