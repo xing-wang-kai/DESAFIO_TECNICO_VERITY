@@ -81,3 +81,8 @@ Em cloud, essa solução poderia evoluir para:
 * sem catálogo de metadados
 * sem monitoramento externo
 * sem gerenciamento avançado de schema evolution
+
+
+## RESUMO
+
+Escolhi uma arquitetura simples o suficiente para rodar localmente, mas que já antecipa preocupações reais de produção. O ponto principal foi tratar o tempo corretamente usando uma janela com lookback para capturar registros tardios, além de garantir idempotência e deduplicação. Separei a orquestração da lógica de transformação para deixar a DAG mais limpa e facilitar evolução futura. Também optei por uma regra explícita de consolidação: para cada pedido e data de negócio, vale o evento mais recente por ingested_at, o que resolve retries e updates operacionais.
