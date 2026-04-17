@@ -14,7 +14,8 @@ from src.load import replace_window_in_sqlite, write_parquet
 def run_pipeline(**context):
     
     ## - [1] DEFINE VALORES PADRÕES COMO : DATA DE INICIO, DATA DE FIM, DATA DA EXECUÇÃO..
-    ds = context["ds"]  # data lógica da DAG, ex: 2026-03-16
+    # ds = context["ds"]  # data lógica da DAG, ex: 2026-03-16
+    ds = "2026-04-11"
     execution_date = datetime.strptime(ds, "%Y-%m-%d").date()
     start_date = execution_date - timedelta(days=LOOKBACK_DAYS)
     end_date = execution_date
