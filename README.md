@@ -3,6 +3,12 @@
 
 Este projeto implementa um pipeline local orquestrado com Apache Airflow para processar dados transacionais da tabela _orders_raw__s, aplicando janela temporal, tratamento de duplicidade, captura de registros tardios e geração de uma visão analítica consolidada.
 
+
+## DiAGRAMA
+
+![Diagrama do processo](\src\imgs\diagrama_processos_verity.png)
+
+
 ## Estratégia temporal
 
 A cada execução, o pipeline processa a data de referência da DAG e também um número configurável de dias anteriores (_lookback_). Essa estratégia permite capturar eventos com atraso de ingestão sem necessidade de mecanismos mais complexos.
@@ -21,6 +27,8 @@ Isso permite tratar tanto reenvios quanto atualizações operacionais do mesmo p
 O pipeline é idempotente para a janela processada. Antes de gravar o resultado consolidado, remove do destino os dados daquela janela e insere novamente a versão recalculada.
 
 ## Como executar localmente
+
+> OBS: nescessário ter Docker instalado no linux, wsl no windows ou Docker desktop no windows.
 
 ```bash
 git clone <repo>
@@ -47,6 +55,8 @@ docker compose exec airflow-webserver airflow users create --username admin --fi
 ```
 
 Depois:
+
+Na janela no webserver do DOCKER
 
 * habilite a DAG orders_analytics_pipeline
 * execute manualmente ou aguarde o scheduler
