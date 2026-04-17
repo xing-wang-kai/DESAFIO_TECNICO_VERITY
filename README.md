@@ -6,7 +6,7 @@ Este projeto implementa um pipeline local orquestrado com Apache Airflow para pr
 
 ## DiAGRAMA
 
-![Diagrama do processo](\src\imgs\diagrama_processos_verity.png)
+![Diagrama do processo](https://github.com/xing-wang-kai/DESAFIO_TECNICO_VERITY/blob/main/src/imgs/diagrama_processos_verity.png)
 
 
 ## Estratégia temporal
